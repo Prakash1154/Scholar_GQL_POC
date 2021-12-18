@@ -16,16 +16,13 @@ public class ScholarMutationResolver implements GraphQLMutationResolver
     private ScholarRepository scholarRepository;
 
     // to create a scholar dtails in db
-    public Scholar createScholar(Scholar scholar){
-            Scholar sc = new Scholar();
-            sc.setId(scholar.getId());
-            sc.setName(scholar.getName());
-            sc.setAge(scholar.getAge());
-            sc.setNumber(scholar.getNumber());
-            sc.setAddress(scholar.getAddress());
-            sc.setEmail(scholar.getEmail());
-            scholarRepository.save(sc);
-            return scholarRepository.findById(scholar.getId()).get();
+    public Scholar createScholar(String id,String name, int age){
+        Scholar sc = new Scholar();
+        sc.setId(id);
+        sc.setName(name);
+        sc.setAge(age);
+        scholarRepository.save(sc);
+        return scholarRepository.findById(id).get();
     }
 
     // to the update the scholar details
